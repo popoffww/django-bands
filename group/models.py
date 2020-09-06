@@ -10,4 +10,4 @@ class Group(models.Model):
     
     class Meta:
         verbose_name = 'Группа'
-        verbose_name_plural = 'Битлз'
+        verbose_name_plural = 'Группы'

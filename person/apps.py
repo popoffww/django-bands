@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class PersonConfig(AppConfig):
     name = 'person'
-    verbose_name = 'Персоны'
+    verbose_name = 'Персона'
