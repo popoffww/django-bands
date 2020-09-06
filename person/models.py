@@ -5,3 +5,7 @@ class Person(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = 'Участник группы'
+        verbose_name_plural = 'Участники группы'
