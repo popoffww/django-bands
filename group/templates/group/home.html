@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Группы - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+    {% for obj in objects_list %}
+
+        {% include 'group/includes/card.html' %}
+
+    {% endfor %}
+
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+{% endblock %}
+
+
+
+
+
+
+
+
+
