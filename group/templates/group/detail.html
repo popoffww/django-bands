@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Группа - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6 jumbotron offset-3 mt-5">
+
+             <div class="col-md-3">
+                <a href="{% url 'group:home' %}"
+                   role="button"
+                   class="btn btn-outline-success ">
+                Вернуться
+               </a>
+            </div>
+
+            <p class="text-center display-4 pt-3"><strong>{{ object }}</strong></p>
+
+            <div class="row d-flex justify-content-around">
+
+                <a href="{% url 'group:update' pk=object.pk %}" role="button" class="btn btn-primary mt-3">Изменить</a>
+
+                <a href="{% url 'group:delete' pk=object.pk %}" role="button" class="btn btn-danger mt-3">Удалить</a>
+
+           </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

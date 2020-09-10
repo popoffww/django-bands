@@ -1,8 +1,24 @@
 
 
-    <div class="col-md-7 mx-auto mt-5">
-        <h2>{{ obj.name }}
-        </h2>
-        <p class="lead">Чтобы увидеть состав группы нажмите кнопку ниже</p>
-        <p><a class="btn btn-outline-info" href="#" role="button">Подробнее &raquo;</a></p>
+<div class="col-md-7 mx-auto mt-1 mb-3">
+
+    <div class="card" style="width: 35rem;">
+
+     <div class="card-header bg-dark">
+        <a href="{% url 'group:detail' pk=object.pk %}" class="text-dark">
+            <h2 class="text-center text-white"
+                style=""
+            >
+                {{ object.name }}
+            </h2>
+        </a>
+     </div>
+
+     <div class="card-body">
+        <p class="lead text-center ">Чтобы увидеть состав группы нажмите кнопку ниже</p>
+        <p class="text-center pt-3"><a class="btn btn-outline-info" href="#" role="button">Подробнее &raquo;</a></p>
+     </div>
+
     </div>
+
+</div>

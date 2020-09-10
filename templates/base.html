@@ -1,10 +1,13 @@
 {% load static %}
+{% url 'home' as home_url %}
 {% url 'group:home' as group_home_url %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
@@ -16,28 +19,36 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="https://img.icons8.com/color/48/000000/python.png"/>
+       <!--<img src="https://img.icons8.com/color/24/000000/python.png"/>-->
+      <i class="fa fa-headphones" aria-hidden="true"></i>
       Rock Club
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+       <a href="admin/" class="badge badge-secondary {% if request.path != home_url %} invisible {% endif %}">Admin</a>
     <div class="collapse navbar-collapse" id="navbarsExample07">
       <ul class="navbar-nav ml-auto pr-5">
         <li class="nav-item {% if request.path == group_home_url %} active {% endif %}">
-          <a class="nav-link" href="{% url 'group:home' %}">Bands</a>
+          <a class="nav-link" href="{% url 'group:home' %}">Группы</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <a class="nav-link dropdown-toggle"
+             href="#" id="dropdown07"
+             data-toggle="dropdown"
+             aria-haspopup="true"
+             aria-expanded="false">
+              <i class="fa fa-user pr-2"></i>
+                Авторизация
+          </a>
           <div class="dropdown-menu" aria-labelledby="dropdown07">
-            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="{% url 'login' %}">Войти</a>
             <a class="dropdown-item" href="#">Another action</a>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
@@ -49,6 +60,31 @@
     </div>
   </div>
 </nav>
+
+     <!--  Success_message-->
+  <div class="container my-4">
+		<div class="row">
+			<div class="col-md-8 mx-auto">
+			  {% if messages %}
+          {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+              <div class="alert alert-danger messages">
+                <span {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                Внимание!  {{ message }}<br/>
+                </span>
+              </div>
+            {%else %}
+              <div class="alert alert-success messages">
+                <span {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}<br/>
+                </span>
+              </div>
+            {% endif %}
+          {% endfor %}
+			  {% endif %}
+			</div>
+		</div>
+     </div>
 
 
      {% block content %} {% endblock %}
