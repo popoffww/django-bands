@@ -24,4 +24,5 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('group/', include(('group.urls', 'group'))),
     path('person/', include(('person.urls', 'person'))),
+    path('membership/', include(('membership.urls', 'membership'))),
 ]

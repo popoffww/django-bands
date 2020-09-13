@@ -16,32 +16,27 @@
       </div>
     </div>
 
-    {% for object in objects_list %}
 
-<div class="container">
+    <div class="container">
+        <div class="row jumbotron m-0 d-flex justify-content-center">
 
-    <div class="row d-flex justify-content-center">
+        {% for object in objects_list %}
 
-        <div class="col-md-3 offset-2">
+        <div class="d-inline-block lead pb-3">
 
-            <p class="alert alert-secondary text-center">
             {{ object.name }}
-            </p>
+
+            <a class="pr-3 text-decoration-none" href="{% url 'person:delete' pk=object.pk %}">
+                &#10060;
+                <!--&times;-->
+            </a>
 
         </div>
 
-        <div class="col-md-3 my-2">
-
-            <a href="{% url 'person:delete' pk=object.pk %}"
-               type="submit" role="button"
-               class="btn btn-outline-danger">Удалить</a>
+        {% endfor %}
 
         </div>
-
     </div>
-</div>
-
-    {% endfor %}
 
 {% endblock %}
 

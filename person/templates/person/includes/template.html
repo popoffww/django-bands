@@ -1,0 +1,36 @@
+<div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-3 mb-5">
+          <a href="{% url 'person:add' %}" class="btn btn-primary btn-block">
+            <i class="fas fa-plus"></i> Создать участника
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {% for object in objects_list %}
+
+<div class="container">
+
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-md-3 offset-2">
+
+            <p class="alert alert-secondary text-center">
+            {{ object.name }}
+            </p>
+
+        </div>
+
+        <div class="col-md-3 my-2">
+
+            <a href="{% url 'person:delete' pk=object.pk %}"
+               type="submit" role="button"
+               class="btn btn-outline-danger">Удалить</a>
+
+        </div>
+
+    </div>
+</div>
+
+    {% endfor %}

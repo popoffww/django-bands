@@ -2,6 +2,7 @@
 {% url 'home' as home_url %}
 {% url 'group:home' as group_home_url %}
 {% url 'person:home' as person_home_url %}
+{% url 'membership:home' as membership_home_url %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,7 +14,7 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <title>{% block title %} Django Rock Club {% endblock %}</title>
   </head>
   <body>
@@ -35,6 +36,9 @@
         </li>
         <li class="nav-item {% if request.path == person_home_url %} active {% endif %}">
           <a class="nav-link" href="{% url 'person:home' %}">Участники</a>
+        </li>
+        <li class="nav-item {% if request.path == memberhip_home_url %} active {% endif %}">
+          <a class="nav-link" href="{% url 'membership:home' %}">Составы</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle"
@@ -75,6 +79,22 @@
     </div>
   </div>
 </nav>
+
+     <!--Membership-->
+    <header class="p-0 bg-primary text-white
+                   {% if request.path != membership_home_url %}
+                      invisible
+                   {% endif %}">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 offset-2">
+          <h1>
+            <i class="fa fa-users"></i> Текущие составы</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
 
      <!--  Success_message-->
   <div class="container my-4">

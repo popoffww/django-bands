@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from .models import Membership
 
-# Create your views here.
+def home(request):
+    members = Membership.objects.all()
+    return render(request, 'membership/home.html', {'objects_list': members})
