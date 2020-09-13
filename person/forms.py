@@ -1,15 +1,15 @@
 from django import forms
-from .models import Group
+from .models import Person
 
-class GroupForm(forms.ModelForm):
+class PersonForm(forms.ModelForm):
     name = forms.CharField(label='',
                            widget=forms.TextInput(
                                attrs={
                                    'class': 'form-control',
-                                   'placeholder': 'Введите название'
+                                   'placeholder': 'Введите имя'
                                }
                            ))
 
     class Meta(object):
-        model = Group
+        model = Person
         fields = ('name',)

@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from .forms import UserLoginForm
 
@@ -20,3 +19,7 @@ def login_view(request):
         redirect_path = next_ or next_post or '/'
         return redirect(redirect_path)
     return render(request, 'login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')

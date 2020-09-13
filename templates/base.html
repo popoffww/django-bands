@@ -1,6 +1,7 @@
 {% load static %}
 {% url 'home' as home_url %}
 {% url 'group:home' as group_home_url %}
+{% url 'person:home' as person_home_url %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -32,31 +33,45 @@
         <li class="nav-item {% if request.path == group_home_url %} active {% endif %}">
           <a class="nav-link" href="{% url 'group:home' %}">Группы</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+        <li class="nav-item {% if request.path == person_home_url %} active {% endif %}">
+          <a class="nav-link" href="{% url 'person:home' %}">Участники</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle"
-             href="#" id="dropdown07"
+             href="#" id="dropAdd"
              data-toggle="dropdown"
              aria-haspopup="true"
              aria-expanded="false">
-              <i class="fa fa-user pr-2"></i>
-                Авторизация
+                Создать
           </a>
-          <div class="dropdown-menu" aria-labelledby="dropdown07">
-            <a class="dropdown-item" href="{% url 'login' %}">Войти</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-menu" aria-labelledby="dropAdd">
+            <a href="{% url 'group:add' %}" class="dropdown-item">Создать группу</a>
+            <a href="{% url 'person:add' %}" class="dropdown-item">Создать участника</a>
           </div>
         </li>
+
+             <!--Авторизация-->
+        <li class="nav-item">
+           {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'logout' %}">
+              <i class="fa fa-user pr-1"></i>
+              Выйти
+            </a>
+            {% else %}
+            <a class="nav-link" href="{% url 'login' %}">
+              <i class="fa fa-user pr-1"></i>
+              Войти
+            </a>
+            {% endif %}
+        </li>
       </ul>
-      <form class="form-inline my-2 my-md-0">
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-      </form>
+      <form class="{% if request.path != group_home_url %} invisible {% endif %}
+                   form-inline my-2 my-lg-0" action="{{ group_home_url }}">
+        <input class="form-control mr-sm-2"
+               type="search" placeholder="Искать"
+               aria-label="Search" name="search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Поиск</button>
+    </form>
     </div>
   </div>
 </nav>

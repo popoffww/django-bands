@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Создать участника - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6 jumbotron offset-3 mt-5">
+
+             <div class="col-md-3">
+                <a href="{% url 'person:home' %}"
+                   role="button"
+                   class="btn btn-outline-success ">
+                Вернуться
+               </a>
+            </div>
+
+            <p class="text-center display-4 pt-3">Создать участника</p>
+
+            <form action="" method="post"> {% csrf_token %}
+
+                {{ form.as_p }}
+
+            <div class="row d-flex justify-content-center">
+
+                <input type="submit" value="Создать"
+                        role="button" class="btn btn-primary mt-3">
+
+           </div> <!--/row-flex-->
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

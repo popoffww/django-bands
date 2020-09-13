@@ -1,24 +1,34 @@
 
 
-<div class="col-md-6 m-auto mt-1 mb-3">
+<div class="col-md-3">
 
-    <div class="card" style="width: 35rem;">
+ <div class="card-deck text-center">
+
+    <div class="card shadow">
 
      <div class="card-header bg-dark">
         <a href="{% url 'group:detail' pk=object.pk %}" class="text-dark">
-            <h2 class="text-center text-white"
-                style=""
-            >
+            <h2 class="text-center text-white">
                 {{ object.name }}
             </h2>
         </a>
      </div>
 
      <div class="card-body">
-        <p class="lead text-center ">Чтобы увидеть состав группы нажмите кнопку ниже</p>
-        <p class="text-center pt-3"><a class="btn btn-outline-info" href="#" role="button">Подробнее &raquo;</a></p>
+         <ul class="list-unstyled">
+             <li class="lead">
+                 <a href="" class="text-dark">Текущий состав</a>
+             </li>
+             <li class="lead">
+                 <a href="{% url 'person:home' %}" class="text-dark">Участники</a>
+             </li>
+         </ul>
+
+        <p class="text-center pt-3"><a class="btn btn-outline-secondary btn-block" href="#" role="button">Подробнее &raquo;</a></p>
      </div>
 
     </div>
+
+ </div>
 
 </div>
