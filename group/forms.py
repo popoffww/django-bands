@@ -2,7 +2,7 @@ from django import forms
 from .models import Group
 
 class GroupForm(forms.ModelForm):
-    name = forms.CharField(label='',
+    group = forms.CharField(label='',
                            widget=forms.TextInput(
                                attrs={
                                    'class': 'form-control',
@@ -12,4 +12,4 @@ class GroupForm(forms.ModelForm):
 
     class Meta(object):
         model = Group
-        fields = ('name',)
+        fields = ('group',)

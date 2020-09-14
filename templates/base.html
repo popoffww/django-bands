@@ -22,7 +22,7 @@
   <div class="container">
     <a class="navbar-brand" href="{% url 'home' %}">
        <!--<img src="https://img.icons8.com/color/24/000000/python.png"/>-->
-      <i class="fa fa-headphones" aria-hidden="true"></i>
+      <i class="fas fa-headphones" aria-hidden="true"></i>
       Rock Club
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,6 +51,7 @@
           <div class="dropdown-menu" aria-labelledby="dropAdd">
             <a href="{% url 'group:add' %}" class="dropdown-item">Создать группу</a>
             <a href="{% url 'person:add' %}" class="dropdown-item">Создать участника</a>
+            <a href="{% url 'membership:add' %}" class="dropdown-item">Создать состав</a>
           </div>
         </li>
 
@@ -80,21 +81,37 @@
   </div>
 </nav>
 
-     <!--Membership-->
-    <header class="p-0 bg-primary text-white
-                   {% if request.path != membership_home_url %}
-                      invisible
-                   {% endif %}">
+     <!--Header-->
+    <header class="p-0 bg-primary text-white">
     <div class="container">
       <div class="row d-flex justify-content-center">
         <div class="col-md-6 offset-2">
-          <h1>
-            <i class="fa fa-users"></i> Текущие составы</h1>
+
+          {% if request.path == membership_home_url %}
+            <h1 class="p-0 bg-primary text-white">
+              <i class="fa fa-users"></i>
+                  Текущие составы
+            </h1>
+          {% endif %}
+
+          {% if request.path == person_home_url %}
+            <h1 class="p-0 bg-primary text-white">
+              <i class="fa fa-user"></i>
+                  Участники
+            </h1>
+          {% endif %}
+
+          {% if request.path == group_home_url %}
+            <h1 class="p-0 bg-primary text-white">
+              <i class="fa fa-music"></i>
+                  Группы
+            </h1>
+          {% endif %}
+
         </div>
       </div>
     </div>
   </header>
-
 
      <!--  Success_message-->
   <div class="container my-4">

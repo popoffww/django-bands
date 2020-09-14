@@ -6,24 +6,75 @@
 
 {% block content %}
 
-    {% for object in objects_list %}
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 lead">
-                {{ object.person }} -
-                <strong>{{ object.group }}</strong>
-            </div>
+  <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-3 mb-3">
+          <a href="{% url 'membership:add' %}" class="btn btn-primary btn-block">
+            <i class="fas fa-plus"></i> Создать состав
+          </a>
         </div>
+      </div>
     </div>
 
-    {% endfor %}
+    <section>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+
+              <div class="card shadow">
+                <div class="card-header">
+                  <h4 class="text-center">
+                     Составы
+                  </h4>
+                </div>
+
+                <table class="table table-striped">
+
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Музыкант</th>
+                      <th class="pl-4">Группа</th>
+                      <th class="pl-4">Дата</th>
+                      <th class="pl-4">Приглашение</th>
+                      <th class="pl-4">Изменить</th>
+                      <th class="pl-4">Удалить</th>
+                        <!--&nbsp;-->
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                  {% for object in objects_list %}
+                    <tr>
+                      <td>{{ object.person }}</td>
+                      <td>{{ object.group }}</td>
+                      <td>{{ object.date_joined }}</td>
+                      <td>{{ object.invite_reason }}</td>
+                      <td>
+                        <a href="" class="btn btn-success btn-sm">
+                          <i class="fas fa-pencil-alt pr-1" aria-hidden="true"></i>
+                            Изменить
+                        </a>
+                      </td>
+                      <td>
+                        <a href="" class="btn btn-danger btn-sm">
+                          <i class="fas fa-trash pr-1"></i>
+                            Удалить
+                        </a>
+                      </td>
+
+
+                    </tr>
+                  {% endfor %}
+
+                </tbody>
+              </table>
+            </div>
+           </div>
+          </div>
+        </div>
+    </section>
 
 {% endblock %}
-
-
-
-
 
 
 
