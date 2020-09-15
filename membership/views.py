@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic.edit import View, CreateView
+from django.views.generic.edit import View, CreateView, UpdateView, DeleteView
 
 from .models import Membership
 from .forms import MembershipForm
@@ -13,12 +13,6 @@ def home(request):
         members = Membership.objects.all()
     return render(request, 'membership/home.html', {'objects_list': members})
 
-# class MembershipCreateView(CreateView):
-#     model = Membership
-#     form_class = MembershipForm
-#     template_name = 'membership/add.html'
-#     success_url = reverse_lazy('membership:home')
-
 class MembershipCreate(View):
     def get(self, request):
         form = MembershipForm()
@@ -30,6 +24,24 @@ class MembershipCreate(View):
             new_membership = bound_form.save()
             return redirect(new_membership)
         return render(request, 'membership/add.html', {'form': bound_form})
+
+# class MembershipCreateView(CreateView):
+#     model = Membership
+#     form_class = MembershipForm
+#     template_name = 'membership/add.html'
+#     success_url = reverse_lazy('membership:home')
+
+class MembershipUpdateView(UpdateView):
+    model = Membership
+    form_class = MembershipForm
+    template_name = 'membership/update.html'
+    success_url = reverse_lazy('membership:home')
+
+class MembershipDeleteView(DeleteView):
+    model = Membership
+    template_name = 'membership/delete.html'
+    success_url = reverse_lazy('membership:home')
+
 
 
 

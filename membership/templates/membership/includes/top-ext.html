@@ -1,0 +1,25 @@
+
+<!--Search-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 ml-auto">
+      <form class="input-group" action="{{ membership_home_url }}">
+        <input name="search_member" type="text" class="form-control" placeholder="Регистрозависимый поиск">
+        <div class="input-group-append">
+          <button class="btn btn-primary">Найти</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--Add Button-->
+<div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-3 mb-3">
+          <a href="{% url 'membership:add' %}" class="btn btn-primary btn-block">
+            <i class="fas fa-plus"></i> Создать состав
+          </a>
+        </div>
+      </div>
+    </div>

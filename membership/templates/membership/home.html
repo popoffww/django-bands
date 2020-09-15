@@ -6,30 +6,6 @@
 
 {% block content %}
 
-  <div class="container">
-      <div class="row">
-        <div class="col-md-4 ml-auto">
-          <form class="input-group" action="{{ membership_home_url }}
-          ">
-            <input name="search_member" type="text" class="form-control" placeholder="Регистрозависимый поиск">
-            <div class="input-group-append">
-              <button class="btn btn-primary">Найти</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-  <div class="container">
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-3 mb-3">
-          <a href="{% url 'membership:add' %}" class="btn btn-primary btn-block">
-            <i class="fas fa-plus"></i> Создать состав
-          </a>
-        </div>
-      </div>
-    </div>
-
     <section>
         <div class="container">
           <div class="row">
@@ -59,13 +35,13 @@
                       <td>{{ object.date_joined }}</td>
                       <td>{{ object.invite_reason }}</td>
                       <td>
-                        <a href="" class="btn btn-outline-success btn-sm">
+                        <a href="{% url 'membership:update' pk=object.pk %}" class="btn btn-outline-success btn-sm">
                           <i class="fas fa-pencil-alt pr-1" aria-hidden="true"></i>
                             Изменить
                         </a>
                       </td>
                       <td>
-                        <a href="" class="btn btn-outline-danger btn-sm">
+                        <a href="{% url 'membership:delete' pk=object.pk %}" class="btn btn-outline-danger btn-sm">
                           <i class="fas fa-trash pr-1"></i>
                             Удалить
                         </a>
