@@ -3,10 +3,10 @@ from person.models import Person
 from group.models import Group
 
 class Membership(models.Model):
-    person = models.ForeignKey(Person, on_delete=models.CASCADE)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    date_joined = models.DateField()
-    invite_reason = models.CharField(max_length=64)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, verbose_name='Музыкант')
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name='Группа')
+    date_joined = models.DateField(verbose_name='Дата')
+    invite_reason = models.CharField(max_length=64, verbose_name='Причина приглашения')
 
     def __str__(self):
             return '{} из группы {}'.format(self.person, self.group)
